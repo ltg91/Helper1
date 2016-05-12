@@ -4,6 +4,16 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import android.hardware.SensorManager;
+import android.location.GpsStatus;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,6 +24,8 @@ import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,9 +36,17 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
 public class MainActivity extends Activity {
+
+    Call mCall;
     Init mInit;
     Register mRegister;
+
     EditText editText_reg_id, editText_reg_pw, editText_reg_nick, editText_reg_email;
     String in_id, in_pw, in_nick, in_email;
     TextView textView_check;
@@ -36,7 +56,13 @@ public class MainActivity extends Activity {
     EditText editText_id, editText_pw;
     boolean log_success;
     String my_nick;
-
+    int login_flag=0;
+    /* 구글맵 필요 객체 선언 */
+    private GoogleMap map;
+    private SensorManager mSensorManager;
+    private boolean mCompassEnabled;
+    public static Double map_x;
+    public static Double map_y;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +72,8 @@ public class MainActivity extends Activity {
         /*선언부*/
         mInit = new Init();
         mRegister = new Register();
+        mCall = new Call();
+
         editText_reg_id = (EditText)findViewById(R.id.editText_reg_id);
         editText_reg_pw = (EditText)findViewById(R.id.editText_reg_pw);
         editText_reg_nick = (EditText)findViewById(R.id.editText_reg_nick);
@@ -56,12 +84,17 @@ public class MainActivity extends Activity {
         editText_id = (EditText)findViewById(R.id.editText_id);
         editText_pw = (EditText)findViewById(R.id.editText_pw);
 
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.fragment, mInit);
-        ft.commit();
+        if(login_flag==0) {
+            FragmentManager fm = getFragmentManager();
+            FragmentTransaction ft = fm.beginTransaction();
+            ft.replace(R.id.fragment, mInit);
+            ft.commit();
+        }
+        else if(login_flag==1) {
 
-
+            Intent map_intent = new Intent(this, MapsActivity.class);
+            startActivity(map_intent);
+        }
 
     }
 
@@ -107,6 +140,8 @@ public class MainActivity extends Activity {
         ft.commit();
 
     }
+
+
 
     public void onFindBtnClicked(View v)
     {
@@ -336,10 +371,15 @@ public class MainActivity extends Activity {
     }
 
     public void onLogSuccess() {
+        Intent map_intent = new Intent(this, MapsActivity.class);
+        startActivity(map_intent);
+
+        /*
+
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-
-        ft.replace(R.id.fragment, mRegister);
+        ft.replace(R.id.fragment, mInit);
         ft.commit();
+         */
     }
 }

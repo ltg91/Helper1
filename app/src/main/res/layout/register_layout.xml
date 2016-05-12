@@ -15,7 +15,8 @@
             android:id="@+id/textView3"
             android:layout_marginTop="65dp"
             android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            android:textSize="40dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -62,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="닉네임"
+            android:text="이름"
             android:id="@+id/textView6"
             android:layout_marginBottom="23dp"
             android:layout_above="@+id/editText_reg_email"
@@ -83,12 +84,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="이메일"
+            android:text="주민번호"
             android:id="@+id/textView7"
-            android:layout_marginBottom="162dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toLeftOf="@+id/editText_reg_email"
-            android:layout_toStartOf="@+id/editText_reg_email" />
+            android:layout_marginBottom="113dp"
+            android:layout_above="@+id/button4"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
 
         <EditText
             android:layout_width="wrap_content"
@@ -97,18 +98,22 @@
             android:ems="10"
             android:id="@+id/editText_reg_email"
             android:layout_alignBottom="@+id/textView7"
-            android:layout_alignLeft="@+id/editText_reg_nick"
-            android:layout_alignStart="@+id/editText_reg_nick" />
+            android:layout_toRightOf="@+id/textView7"
+            android:layout_toEndOf="@+id/textView7" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="신청"
+            android:text="가입하기"
             android:id="@+id/button4"
-            android:layout_below="@+id/editText_reg_email"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="55dp"
-            android:onClick="onAppBtnClicked" />
+            android:onClick="onAppBtnClicked"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:background="#3cb2d4"
+            android:textSize="30dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,5 +122,16 @@
             android:layout_alignBottom="@+id/button4"
             android:layout_alignLeft="@+id/textView3"
             android:layout_alignStart="@+id/textView3" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="실명인증"
+            android:id="@+id/button5"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/editText_reg_email"
+            android:layout_centerHorizontal="true"
+            android:background="#3db2d4" />
+
     </RelativeLayout>
 </LinearLayout>
