@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:onClick="onNewClicked"
+        android:background="#3db2d7">
+
+
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageView"
+            android:background="@drawable/mainlogo"
+            android:layout_marginTop="31dp"
+            android:layout_below="@+id/textView_check2"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" "
+            android:id="@+id/textView_check2"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HELPEE 가입하기"
+            android:id="@+id/button8"
+            android:layout_marginTop="66dp"
+            android:background="#ffffff"
+            android:layout_below="@+id/imageView"
+            android:layout_alignLeft="@+id/imageView"
+            android:layout_alignStart="@+id/imageView"
+            android:layout_alignRight="@+id/imageView"
+            android:layout_alignEnd="@+id/imageView"
+            android:textSize="30dp"
+            android:onClick="onHelpeeRegBtnClicked" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HELPER 가입하기"
+            android:id="@+id/button9"
+            android:background="#ffffff"
+            android:layout_marginTop="36dp"
+            android:layout_below="@+id/button8"
+            android:layout_alignLeft="@+id/button8"
+            android:layout_alignStart="@+id/button8"
+            android:layout_alignRight="@+id/button8"
+            android:layout_alignEnd="@+id/button8"
+            android:textSize="30dp"
+            android:onClick="onHelperRegBtnClicked" />
+
+    </RelativeLayout>
+</LinearLayout>

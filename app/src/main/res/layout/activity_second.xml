@@ -10,11 +10,29 @@
         android:id="@+id/fragment"
         android:layout_height="535dp"
         android:layout_width="match_parent"
-        android:background="#f4f4f4">
+        android:background="#f4f4f4"
+        android:weightSum="1">
 
         <LinearLayout
             android:layout_height="wrap_content"
             android:layout_width="match_parent">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:background="#3cb2d7">
+
+            <ImageButton
+                android:layout_width="146dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/imageButton2"
+                android:background="@drawable/sos1"
+                android:layout_gravity="right"
+                android:onClick="onSOSbtnClicked" />
 
         </LinearLayout>
 
